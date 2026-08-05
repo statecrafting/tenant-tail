@@ -1,7 +1,7 @@
 ---
 id: "000-tenant-tail-bootstrap"
 title: "tenant-tail bootstrap (verify-only toolkit skeleton)"
-status: draft
+status: approved
 created: "2026-06-16"
 authors: ["tenant-tail"]
 kind: tooling

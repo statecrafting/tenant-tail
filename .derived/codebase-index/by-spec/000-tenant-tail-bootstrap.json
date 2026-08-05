@@ -111,8 +111,8 @@
       }
     ],
     "specId": "000-tenant-tail-bootstrap",
-    "specStatus": "draft"
+    "specStatus": "approved"
   },
   "schemaVersion": "1.1.0",
-  "shardHash": "87cbc21057328fa32d3fc0b82685b4dda5797620b70a5edcac9dcb6d9617457a"
+  "shardHash": "0b572215443fc4eefefc6a5bbe65029f8f2d754fa7abaeb809afe773a83f1751"
 }
