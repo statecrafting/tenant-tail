@@ -1,8 +1,9 @@
 # [tenant-tail](https://statecrafting.github.io/tenant-tail/) [![CI](https://github.com/statecrafting/tenant-tail/actions/workflows/ci.yml/badge.svg)](https://github.com/statecrafting/tenant-tail/actions/workflows/ci.yml)
 ![Tenant Tail Verification Surface](.github/img/tenant-tail-github-banner.jpg)
 
-**The vended tenant verification surface. Spine to tail: spec-spine compiles the
-corpus, tenant-tail verifies the factory's run-side paperwork.**
+**The vended tenant verification surface.
+Spine to tail: spec-spine compiles the corpus,
+tenant-tail verifies the factory's run-side paperwork.**
 
 tenant-tail is a verify-only CLI a produced application pins (one exact-version
 npm devDependency, next to `spec-spine`) to re-check the run-side artifacts the
