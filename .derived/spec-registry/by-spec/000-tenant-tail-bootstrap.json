@@ -27,7 +27,7 @@
       }
     ],
     "id": "000-tenant-tail-bootstrap",
-    "implementation": "in-progress",
+    "implementation": "complete",
     "kind": "tooling",
     "references": [
       {
@@ -51,6 +51,6 @@
     "summary": "Bootstrap spec for the tenant-tail repository: a verify-only toolkit that re-checks a factory's run-side paperwork (governance certificate, provenance) with no trust in the producer. This spec establishes the workspace skeleton (a three-crate Cargo workspace mirroring spec-spine, plus the npm binary-distribution wrapper) and seeds this repo's own spec corpus, which is governed by the pinned spec-spine library. The verify cores and the verbs that expose them are added by subsequent specs in this corpus as the extraction lands; see OAP spec 219-tenant-tail-verifier-toolkit for the decision to vend and the extraction map.\n",
     "title": "tenant-tail bootstrap (verify-only toolkit skeleton)"
   },
-  "shardHash": "f1674c79287cdfb3e172294fd482e5bb1b2ea1a853051f6a18dcb2b6a33289cb",
+  "shardHash": "34367c91a33bfebe3ee9e6c5314485e7467511a3b476a2ffc5bfcf12eadb2070",
   "specVersion": "1.1.0"
 }
