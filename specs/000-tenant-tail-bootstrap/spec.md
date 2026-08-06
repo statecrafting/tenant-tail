@@ -5,7 +5,7 @@ status: approved
 created: "2026-06-16"
 authors: ["tenant-tail"]
 kind: tooling
-implementation: pending
+implementation: in-progress
 risk: low
 summary: >
   Bootstrap spec for the tenant-tail repository: a verify-only toolkit that
