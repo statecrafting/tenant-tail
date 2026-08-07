@@ -7,8 +7,8 @@
 #
 # Governed by OAP spec 219-tenant-tail-verifier-toolkit (the decision to vend)
 # and by this repo's OWN specs/ corpus (compiled by the pinned spec-spine
-# library, the dogfooding pattern). SCAFFOLD: structure only; the verify cores
-# are implemented by the tenant-tail worker agent.
+# library, the dogfooding pattern). Both verify cores (certificate, provenance)
+# are implemented and tested; the verbs over them live in the cli crate.
 
 [workspace]
 resolver = "2"
