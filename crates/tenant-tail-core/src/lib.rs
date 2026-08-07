@@ -29,3 +29,12 @@ pub use certificate::{
     agentic_posture_binding_inconsistencies, verify_certificate, verify_certificate_with_platform,
 };
 pub use platform_jws::PlatformJwks;
+
+// Provenance verify surface, re-exported at the crate root alongside the cert
+// surface so both verbs import from one path. The allowlist / citation / corpus
+// / manifest layer stays behind `provenance::`: it is the validator's internal
+// data-and-matching layer, not the verify entrypoint.
+pub use provenance::{
+    AuditReport, ClaimRecord, CorpusSource, VALIDATION_REPORT_VERSION, ValidationReport,
+    ValidationSummary, audit, audit_with_options, render_audit_report, validate,
+};
