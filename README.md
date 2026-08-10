@@ -27,11 +27,12 @@ identity-bearing, non-reproducible, and harness-bound, and ships with its firing
 in a separate emit spec. tenant-tail is verify-only by construction (no emitter
 verb, no emitter dependency).
 
-## Status: SCAFFOLD
+## Status: released
 
-This repository is currently a structural skeleton mirroring spec-spine's
-repo/crate/npm shape. The verify cores are extracted and implemented by the
-tenant-tail worker agent. Governing artifacts:
+Both verify cores are implemented and tested. `v0.4.0` is published across all
+three channels: crates.io (`tenant-tail-cli`, `tenant-tail-core`,
+`tenant-tail-types`), npm (`tenant-tail`), and PyPI (`tenant-tail`).
+`verify-sbom` remains staged, as described above. Governing artifacts:
 
 - **OAP spec 219-tenant-tail-verifier-toolkit** -- the decision to vend, the
   scope, and the OAP-side extraction source.
@@ -48,9 +49,10 @@ crates/
   tenant-tail-core/    the verify engines (certificate, provenance)
   tenant-tail-cli/     the `tenant-tail` binary (verbs)
 npm/                   prebuilt-binary npm wrapper (mirror of spec-spine's)
+py/                    prebuilt-binary PyPI wheels (the parallel channel)
 specs/                 this repo's spec corpus (governed by spec-spine)
 standards/spec/        authoring templates
-.github/workflows/     ci (dogfood) + release (per-triple binaries + npm)
+.github/workflows/     ci (dogfood) + release (per-triple binaries + npm + PyPI)
 ```
 
 ## License
