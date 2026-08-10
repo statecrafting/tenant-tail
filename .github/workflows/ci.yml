@@ -18,6 +18,14 @@ on:
   # merge_group does not carry); every other check runs here. INERT until a repo
   # admin enables the merge queue in branch protection.
   merge_group:
+  # Manual, webhook-independent escape hatch. Every other trigger here depends on
+  # GitHub delivering a webhook; when delivery is throttled (as in the 2026-08-06
+  # Actions incident, which processed ~15% of webhooks) a push produces no run at
+  # all, so the required `ci-gate` check never arrives and the PR hangs pending
+  # forever with nothing to re-run. This lets a run be forced by hand. The two
+  # PR-only steps (the coupling gate and ai-review) skip on this event, which
+  # ci-gate counts as a pass.
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -30,7 +38,7 @@ jobs:
     name: build · test · clippy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       # rust-toolchain.toml pins the exact channel (+ rustfmt, clippy).
       - name: Show toolchain
         run: rustc --version && cargo --version
@@ -47,13 +55,13 @@ jobs:
     name: self-governance (compile · index · lint · couple)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           # Full history so the coupling gate can diff the PR base SHA against
           # HEAD; the default shallow clone (fetch-depth 1) leaves the base
           # commit absent and `git diff base...HEAD` fails.
           fetch-depth: 0
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 20
       # Root package.json pins spec-spine as a devDependency; npm ci installs it
