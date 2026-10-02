@@ -50,6 +50,13 @@
       }
     ],
     "risk": "medium",
+    "sectionDigests": {
+      "001-certificate-verify-core": "a7f10cd93eafc86d47b5fa3e4316d319abef44e9ed42a53d65dcb7172848a6f9",
+      "1-purpose": "76c058bd2ad6a80a70dad703325d80b0ce40f4c310b67fb435e710d888c472ed",
+      "2-territory": "28cdbe5173ec647c3dc5b39624e8a51016505acf26058f32dc1b7c994328b5b8",
+      "3-behavior": "b60f3ffaa32f7a477c144757129458c40c16333ea52e40ba0a5150302c358422",
+      "4-out-of-scope": "e4d9e4dc40fe457cb25e185cedc4a647b735696df11bec7dd9d2334083ecc9a3"
+    },
     "sectionHeadings": [
       "001: Certificate verify core",
       "1. Purpose",
@@ -63,5 +70,5 @@
     "title": "Certificate verify core (offline governance-certificate verification)"
   },
   "shardHash": "0a8136bbd1cd81e9ea5e67a9e0aee82e61d34c3a4e6aca839b2e36835e9f9835",
-  "specVersion": "1.1.0"
+  "specVersion": "1.9.0"
 }

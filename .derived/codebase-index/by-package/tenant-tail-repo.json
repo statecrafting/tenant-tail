@@ -6,6 +6,6 @@
     "specRef": "000-tenant-tail-bootstrap",
     "version": "0.2.0"
   },
-  "schemaVersion": "1.1.0",
-  "shardHash": "e813ca7a17add44c9419506becfe8f570b0cab4746b37bfa3af75ce25962f24a"
+  "schemaVersion": "1.2.0",
+  "shardHash": "937036cd57f66a0859c624e07aeca3f09bde94cf28affdf768a6d3c84fa0a27e"
 }

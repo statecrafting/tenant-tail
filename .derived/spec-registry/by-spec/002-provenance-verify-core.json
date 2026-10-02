@@ -54,6 +54,13 @@
       }
     ],
     "risk": "medium",
+    "sectionDigests": {
+      "002-provenance-verify-core": "ff6e39ffb0b6640f3e92227e1246b90b84998b62daf50b46af6a062cd1b4b91a",
+      "1-purpose": "e8eb21c517900ae019d660d17f010d939c7c2bc3d33b99a1f372bcf113aaa0bf",
+      "2-territory": "326402a5a93ff417f941cee6bf209849439d322d58890166abd2aaad59bfd87a",
+      "3-behavior": "fa1f715e6cfb27cc693a28043d3a92064d45b163dd81c94ad35e709a4170a77f",
+      "4-out-of-scope": "b8089a199d503a4f9c0ce36192c23bfc5d2476442ee2d25a43761a51982d606b"
+    },
     "sectionHeadings": [
       "002: Provenance verify core",
       "1. Purpose",
@@ -67,5 +74,5 @@
     "title": "Provenance verify core (claim-provenance re-check)"
   },
   "shardHash": "97bfe6a23b70b9580f6a59f47f4652159b61237d02bfde0265ff849599c665e2",
-  "specVersion": "1.1.0"
+  "specVersion": "1.9.0"
 }

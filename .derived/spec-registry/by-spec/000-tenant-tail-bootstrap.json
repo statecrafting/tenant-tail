@@ -6,6 +6,50 @@
     "created": "2026-06-16",
     "establishes": [
       {
+        "kind": "directory",
+        "path": "website/"
+      },
+      {
+        "kind": "directory",
+        "path": ".githooks/"
+      },
+      {
+        "kind": "directory",
+        "path": "standards/spec/"
+      },
+      {
+        "kind": "file",
+        "path": "spec-spine.toml"
+      },
+      {
+        "kind": "file",
+        "path": "AGENTS.md"
+      },
+      {
+        "kind": "file",
+        "path": "Makefile"
+      },
+      {
+        "kind": "file",
+        "path": ".github/CODEOWNERS"
+      },
+      {
+        "kind": "file",
+        "path": ".github/workflows/statecraft-ai-review.yml"
+      },
+      {
+        "kind": "file",
+        "path": ".github/workflows/statecraft-ci.yml"
+      },
+      {
+        "kind": "directory",
+        "path": ".statecraft/"
+      },
+      {
+        "kind": "directory",
+        "path": "scripts/statecraft/"
+      },
+      {
         "kind": "file",
         "path": "Cargo.toml"
       },
@@ -39,18 +83,27 @@
       }
     ],
     "risk": "low",
+    "sectionDigests": {
+      "000-tenant-tail-bootstrap": "0afaf3afacd05a066e82a0c21da8f7a1ed662f492bc992aa05785ee73bc49658",
+      "1-purpose": "42d75fc5da4634882864446abaa184e4538a6424db62e7954b1d6970b011bbf5",
+      "2-territory": "f4d06290107fa274f5de5660343325e43b1c23f3eff457f2f8558faa5f447ceb",
+      "3-behavior": "545198b508cb351b3fd04eaa4c6d93e6e6fbcb515695846ee8678935f567a772",
+      "4-out-of-scope": "ce7f96276bb561c8c6cbe216d96381ec1830aacad8c1e94becc0019b91899cf6",
+      "managed-governance-enrollment-2026-10-02": "605687feb4f64db85530621761e39c0e002440524490ecb9e15ec16dea4b2ae9"
+    },
     "sectionHeadings": [
       "000: tenant-tail bootstrap",
       "1. Purpose",
       "2. Territory",
       "3. Behavior",
-      "4. Out of scope"
+      "4. Out of scope",
+      "Managed governance enrollment (2026-10-02)"
     ],
     "specPath": "specs/000-tenant-tail-bootstrap/spec.md",
     "status": "approved",
     "summary": "Bootstrap spec for the tenant-tail repository: a verify-only toolkit that re-checks a factory's run-side paperwork (governance certificate, provenance) with no trust in the producer. This spec establishes the workspace skeleton (a three-crate Cargo workspace mirroring spec-spine, plus the npm binary-distribution wrapper) and seeds this repo's own spec corpus, which is governed by the pinned spec-spine library. The verify cores and the verbs that expose them are added by subsequent specs in this corpus as the extraction lands; see OAP spec 219-tenant-tail-verifier-toolkit for the decision to vend and the extraction map.\n",
     "title": "tenant-tail bootstrap (verify-only toolkit skeleton)"
   },
-  "shardHash": "34367c91a33bfebe3ee9e6c5314485e7467511a3b476a2ffc5bfcf12eadb2070",
-  "specVersion": "1.1.0"
+  "shardHash": "e97f715f0b384b9006055d40cc5cf6f0315424f460f489dcec1865ab3326802b",
+  "specVersion": "1.9.0"
 }

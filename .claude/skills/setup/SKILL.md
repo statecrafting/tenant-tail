@@ -13,7 +13,7 @@ works and `/init` can report lifecycle counts through the pinned spec-spine
 
 tenant-tail is verify-only: it has no emitter, no signing keys, and no
 network surface. Governance is dogfooded through the **pinned spec-spine
-devDependency** (`npx --no-install spec-spine ...`), not an in-tree binary.
+binary** (`.bin/spec-spine ...`), installed by `make tools`.
 
 ## Process
 
@@ -55,14 +55,16 @@ reference for lifecycle queries. Smoke-test the gates `/init` and CI
 depend on:
 
 ```bash
-npx --no-install spec-spine compile         # regenerate the registry deterministically
-npx --no-install spec-spine index check     # codebase index staleness gate
-npx --no-install spec-spine lint --fail-on-warn   # corpus conformance
+make tools                     # install the exact spec-spine.toml pin
+.bin/spec-spine compile         # regenerate the registry deterministically
+.bin/spec-spine index check     # codebase index staleness gate
+.bin/spec-spine lint --fail-on-warn   # corpus conformance
 ```
 
-If `index check` exits non-zero the committed index is stale against
-current inputs. Regenerate and re-commit it, then re-check. Do not parse
-`.derived/**/*.json` directly to "verify" success.
+`index check` exits 0 when fresh, 1 for a finding (including stale), 2
+when refused, 3 for usage, and 4 when failed. Regenerate and re-commit only
+for a confirmed stale-index finding. Diagnose every other nonzero result
+before continuing. Do not parse `.derived/**/*.json` to verify success.
 
 ### 5. Emit summary
 
@@ -89,8 +91,8 @@ Do not invent counts. Only report values that came back from a command.
 ## Rules
 
 - The build target is `cargo build --release -p tenant-tail-cli`. The
-  governance loop runs through `npx --no-install spec-spine`, the pinned
-  devDependency.
+  governance loop runs through `.bin/spec-spine`, the pinned
+  repository-local binary.
 - Halt on first failure. Do not silently continue past a missing
   prerequisite or a failing gate.
 - Never parse `.derived/**/*.json` directly in any verification step.

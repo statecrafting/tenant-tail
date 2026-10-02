@@ -5,10 +5,6 @@
     ],
     "implementingPaths": [
       {
-        "path": "NOTICE",
-        "source": "spec-edge"
-      },
-      {
         "path": "crates/tenant-tail-core/src/certificate.rs",
         "source": "spec-edge"
       },
@@ -146,6 +142,6 @@
     "specId": "001-certificate-verify-core",
     "specStatus": "draft"
   },
-  "schemaVersion": "1.1.0",
-  "shardHash": "4d15ce1bd3dd02256973fbf909bcde3815629261781892fe414d3bd56e0e1274"
+  "schemaVersion": "1.2.0",
+  "shardHash": "0a8136bbd1cd81e9ea5e67a9e0aee82e61d34c3a4e6aca839b2e36835e9f9835"
 }

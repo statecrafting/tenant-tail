@@ -15,17 +15,17 @@
 #   - Claude CLI version pinned via env (CLAUDE_CLI_VERSION).
 #   - draft PRs are skipped to avoid burning subscription tokens on WIP.
 #   - oversized diffs are skipped but the skip is made VISIBLE via a PR
-#     comment, so a green ci-gate never falsely implies "reviewed".
+#     comment, so a green ci-legacy never falsely implies "reviewed".
 #   - API-failure resilience (OAP spec 177, 2026-06-23): a Claude API outage
-#     passes ci-gate with a loud, visible notice instead of red-gating merges,
+#     passes ci-legacy with a loud, visible notice instead of red-gating merges,
 #     while an auth failure still hard-fails (anti-silent-green guard).
 
 name: AI PR Review
 
 on:
   # Dispatched as a reusable workflow from ci.yml so the AI review is part of
-  # the orchestrated PR-gate suite and the terminal `ci-gate` `needs:` it (a
-  # failed or absent review blocks merge; green ci-gate => actually reviewed or
+  # the orchestrated PR-gate suite and the terminal `ci-legacy` `needs:` it (a
+  # failed or absent review blocks merge; green ci-legacy => actually reviewed or
   # visibly skipped). It does NOT trigger standalone on `pull_request` (that
   # would double-run it).
   #
@@ -133,13 +133,13 @@ jobs:
               exit 1
             fi
             # Allowlist, not a blocklist: only these three specifically-named
-            # transient signatures pass ci-gate. Everything else falls through
+            # transient signatures pass ci-legacy. Everything else falls through
             # to the fail-closed branch below.
             transient='rate_limit_error|rate limit|too many requests|\b429\b'
             transient="${transient}|overloaded_error|internal_server_error|service_unavailable_error|\b5[0-9]{2}\b|bad gateway|gateway timeout|service unavailable|internal server error"
             transient="${transient}|\btimeout\b|timed[ _-]?out|ETIMEDOUT|ECONNRESET|ECONNREFUSED|ENOTFOUND|EAI_AGAIN|network error|socket hang[ _-]?up|fetch failed|getaddrinfo|connection reset|connection refused"
             if ! printf '%s' "$err" | grep -qiE "$transient"; then
-              echo "::error::AI review failed with an unrecognized error (rc=${rc}); not a known transient-outage signature (rate limit / 5xx / network timeout), so failing closed instead of silently passing ci-gate. Details above."
+              echo "::error::AI review failed with an unrecognized error (rc=${rc}); not a known transient-outage signature (rate limit / 5xx / network timeout), so failing closed instead of silently passing ci-legacy. Details above."
               exit 1
             fi
             excerpt="$(printf '%s' "$err" | tr '\n\r\t' '   ' | sed 's/  */ /g' | cut -c1-280)"
@@ -149,7 +149,7 @@ jobs:
               echo "api_rc=${rc}"
               echo "api_excerpt=${excerpt}"
             } >> "$GITHUB_OUTPUT"
-            echo "::warning::AI review could not run due to a Claude API failure (rc=${rc}): ${excerpt}. Passing ci-gate so the API incident does not block merges; re-run once the API recovers."
+            echo "::warning::AI review could not run due to a Claude API failure (rc=${rc}): ${excerpt}. Passing ci-legacy so the API incident does not block merges; re-run once the API recovers."
           fi
 
       - name: Post review comment
@@ -176,7 +176,7 @@ jobs:
         # A Claude API outage must not block merges, but the pass must never be
         # silent. Run AI Review classified the failure as an API outage
         # (review_status=api_failure) and exited 0; surface that here so a human
-        # sees the review did NOT happen and ci-gate passed anyway. Same posture
+        # sees the review did NOT happen and ci-legacy passed anyway. Same posture
         # as the oversized-diff skip notice below.
         if: steps.aireview.outputs.review_status == 'api_failure'
         env:
@@ -185,7 +185,7 @@ jobs:
           API_RC: ${{ steps.aireview.outputs.api_rc }}
           API_EXCERPT: ${{ steps.aireview.outputs.api_excerpt }}
         run: |
-          echo "::warning::AI review SKIPPED due to a Claude API failure (rc=${API_RC}); ci-gate passes so the incident does not block merges. Re-run after recovery."
+          echo "::warning::AI review SKIPPED due to a Claude API failure (rc=${API_RC}); ci-legacy passes so the incident does not block merges. Re-run after recovery."
           {
             echo "## AI Code Review: SKIPPED (Claude API failure)"
             echo ""
@@ -195,14 +195,14 @@ jobs:
             echo ""
             printf '> %s\n' "${API_EXCERPT}"
             echo ""
-            echo "\`ci-gate\` is passing anyway so a transient Anthropic API incident does not block merges (API-failure resilience). A green \`ci-gate\` here does **not** imply an AI review happened: re-run this job once the API recovers."
+            echo "\`ci-legacy\` is passing anyway so a transient Anthropic API incident does not block merges (API-failure resilience). A green \`ci-legacy\` here does **not** imply an AI review happened: re-run this job once the API recovers."
           } > /tmp/api-fail-comment.md
           gh pr comment "$PR_NUMBER" --body-file /tmp/api-fail-comment.md || echo "::warning::could not post API-failure notice comment"
 
       - name: Skip notice (oversized diff; make the skip VISIBLE, not silent)
         # When the diff exceeds DIFF_SIZE_CAP the review can't run, but the job
-        # still succeeds, so ci-gate passes. That would be a SILENT hole in the
-        # "green ci-gate => reviewed" claim. Post a PR comment so the skip is
+        # still succeeds, so ci-legacy passes. That would be a SILENT hole in the
+        # "green ci-legacy => reviewed" claim. Post a PR comment so the skip is
         # visible and a human knows manual review is needed.
         if: steps.diff.outputs.skip == 'true'
         env:
@@ -216,6 +216,6 @@ jobs:
             echo ""
             echo "This PR's diff (**${DIFF_LINES} lines**) exceeds \`DIFF_SIZE_CAP\` (${DIFF_SIZE_CAP}), so the automated AI review did **not** run."
             echo ""
-            echo "\`ci-gate\` still passes (the review job is skipped, not failed), so **a human reviewer must review this PR manually.** A green \`ci-gate\` on this PR does **not** imply an AI review happened."
+            echo "\`ci-legacy\` still passes (the review job is skipped, not failed), so **a human reviewer must review this PR manually.** A green \`ci-legacy\` on this PR does **not** imply an AI review happened."
           } > /tmp/skip-comment.md
           gh pr comment "$PR_NUMBER" --body-file /tmp/skip-comment.md

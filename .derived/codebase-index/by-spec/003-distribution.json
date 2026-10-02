@@ -31,10 +31,6 @@
         "source": "manifest-metadata"
       },
       {
-        "path": "npm/README.md",
-        "source": "spec-edge"
-      },
-      {
         "path": "npm/bin/tenant-tail.js",
         "source": "spec-edge"
       },
@@ -60,10 +56,6 @@
       },
       {
         "path": "py",
-        "source": "spec-edge"
-      },
-      {
-        "path": "py/README.md",
         "source": "spec-edge"
       },
       {
@@ -275,6 +267,6 @@
     "specId": "003-distribution",
     "specStatus": "approved"
   },
-  "schemaVersion": "1.1.0",
-  "shardHash": "7cdc179487f6d6c0f28cfab43ffe301c9361e3171a149d73c7ebf429592c3d51"
+  "schemaVersion": "1.2.0",
+  "shardHash": "aad057a6f3fa7e5b466140373093f95134819904f97897b9646ac554fc90e008"
 }
