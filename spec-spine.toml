@@ -1,8 +1,11 @@
+[meta]
+required_version = "=0.28.0"
+
 # spec-spine governing the tenant-tail repository (dogfood).
 #
 # tenant-tail vends a verify-only toolkit; its own specs/ corpus is governed by
-# the published spec-spine library, pinned as a dev dependency and invoked as
-# `npx --no-install spec-spine {compile,lint,index check,couple}`. This is the
+# the published spec-spine CLI, pinned by [meta] required_version and invoked as
+# `.bin/spec-spine {compile,lint,index check,couple}`. This is the
 # same dogfooding pattern spec-spine and OAP both follow. spec-spine reads its
 # config from `spec-spine.toml` at the repo root; only the metadata namespace
 # and layout differ from the built-in defaults.
@@ -31,7 +34,7 @@ standalone_rust_workspaces = []
 standalone_npm_packages    = ["npm"]
 
 [index]
-extra_hashed_inputs = ["standards/**", ".github/workflows/**"]
+extra_hashed_inputs = ["AGENTS.md", "Makefile", "scripts/statecraft/**/*", ".statecraft/AGENTS.md", ".statecraft/environment.json", ".statecraft/setup/github-actions-rust.json", ".github/CODEOWNERS", "standards/**/*", ".github/workflows/**/*"]
 resolver_exclusions = ["target", "node_modules", ".derived", "dist", "build", ".next"]
 
 [branding]
@@ -49,3 +52,29 @@ code-fingerprint = "fingerprint://"
 
 [frontmatter]
 extra_known_keys = []
+
+[lint]
+# Legacy whole-file source claims preserve their established ownership model.
+# They are deliberately unwitnessed rather than making every code edit a global hash.
+unwitnessed_allowed = [
+  "Cargo.toml",
+  "crates/tenant-tail-cli/src/main.rs",
+  "crates/tenant-tail-core/src/certificate.rs",
+  "crates/tenant-tail-core/src/data/agentic-sdk-watchlist.json",
+  "crates/tenant-tail-core/src/data/core-allowlist.txt",
+  "crates/tenant-tail-core/src/inter_stage_manifest.rs",
+  "crates/tenant-tail-core/src/lib.rs",
+  "crates/tenant-tail-core/src/platform_jws.rs",
+  "crates/tenant-tail-core/tests/certificate_parity.rs",
+  "crates/tenant-tail-core/tests/provenance_parity.rs",
+  "crates/tenant-tail-types/src/budget.rs",
+  "crates/tenant-tail-types/src/knowledge.rs",
+  "crates/tenant-tail-types/src/lib.rs",
+  "crates/tenant-tail-types/src/provenance.rs",
+  "npm/bin/tenant-tail.js",
+  "npm/lib/platform.js",
+  "npm/scripts/generate-platform-packages.js",
+  "npm/scripts/smoke-test.sh",
+  "npm/test/platform.test.js",
+  "py/scripts/generate_wheels.py",
+]

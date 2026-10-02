@@ -19,6 +19,17 @@ summary: >
   and the extraction map.
 depends_on: []
 establishes:
+  - { kind: directory, path: "website/" }
+  - { kind: directory, path: ".githooks/" }
+  - { kind: directory, path: "standards/spec/" }
+  - { kind: file, path: "spec-spine.toml" }
+  - { kind: file, path: "AGENTS.md" }
+  - { kind: file, path: "Makefile" }
+  - { kind: file, path: ".github/CODEOWNERS" }
+  - { kind: file, path: ".github/workflows/statecraft-ai-review.yml" }
+  - { kind: file, path: ".github/workflows/statecraft-ci.yml" }
+  - { kind: directory, path: ".statecraft/" }
+  - { kind: directory, path: "scripts/statecraft/" }
   - { kind: file, path: "Cargo.toml" }
   - { kind: directory, path: "crates/tenant-tail-types" }
   - { kind: directory, path: "crates/tenant-tail-core" }
@@ -93,3 +104,20 @@ bootstrap territory.
   binding (OAP spec 218, which mints the `corpusBinding` block): sibling work in
   other corpora. The tenant-ward VERIFY side of the binding (the by-reference
   link check) has landed under `001-certificate-verify-core`.
+
+## Managed governance enrollment (2026-10-02)
+
+The owner requested enrollment on spec-spine =0.28.0 and the Statecraft
+github-actions-rust profile revision 13. The adopted pin remains the single
+version authority. The managed profile installs .bin/spec-spine, preserves
+signed commits, checks every commit, enforces source coverage and ratified
+path ownership, and requires owner review for authority changes.
+The legacy aggregate is ci-legacy; require both ci-gate and ci-legacy until
+the distribution-specific checks move into the managed profile.
+
+The constitution template uses section authority claims for amendments, matching
+the managed constitution. The `amends` relationship continues to target spec ids.
+
+The authored constitution retains corpus principles I through V and the
+amendment contract. Template authoring instructions are not part of the live
+constitution. This enrollment adds no unratified product principles.

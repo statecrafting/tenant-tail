@@ -116,10 +116,9 @@ of OAP's schema-parity-walker):
 
 ## Governance (this repo dogfoods spec-spine)
 
-This repo's own `specs/` corpus is governed by the **pinned `spec-spine` library** (the
-self-governance pattern spec-spine and OAP follow). The pin has landed: the repo-root
-`package.json` declares `spec-spine` as a devDependency (currently `0.10.0`), installed via
-`npm ci` from the committed `package-lock.json`. Config is `spec-spine.toml` (metadata
+This repo's own `specs/` corpus uses the exact-pinned repository-local
+`.bin/spec-spine` CLI. `make tools` installs the =0.28.0 version declared
+in `spec-spine.toml`. Config is `spec-spine.toml` (metadata
 namespace `tenant-tail`; `domain`/`kind` validation disabled). New code must be claimed by
 a spec in `specs/` or the coupling gate fails. The corpus: `000-tenant-tail-bootstrap`
 (the workspace + crates), `001-certificate-verify-core`, `002-provenance-verify-core`,
@@ -129,10 +128,10 @@ a spec in `specs/` or the coupling gate fails. The corpus: `000-tenant-tail-boot
 Governance commands (the root `package.json` also wraps these as `spec:*` npm scripts):
 
 ```sh
-npx --no-install spec-spine compile            # compile/validate the spec registry
-npx --no-install spec-spine index check        # committed index must be current
-npx --no-install spec-spine lint --fail-on-warn
-npx --no-install spec-spine couple --base <sha> --head HEAD --pr-body <file>
+.bin/spec-spine compile            # compile/validate the spec registry
+.bin/spec-spine index check        # committed index must be current
+.bin/spec-spine lint --fail-on-warn
+.bin/spec-spine couple --base <sha> --head HEAD --pr-body <file>
 npm run spec:check                             # compile && index check && lint, in one
 ```
 
@@ -171,7 +170,7 @@ Toolchain is pinned to Rust `1.92.0` (`rust-toolchain.toml`); edition 2024, MSRV
 branch protection / the merge queue to require just that one name, not the enumerated list):
 
 - `test` -- fmt/clippy/build/test, all `--locked`.
-- `self_governance` -- `npm ci` then the pinned spec-spine over this corpus: `compile`,
+- `self_governance` -- install the exact TOML pin, then the pinned spec-spine over this corpus: `compile`,
   `index check`, `lint --fail-on-warn`, and (pull_request only) `couple` against the PR
   base SHA. The coupling gate reads the `Spec-Drift-Waiver:` line from the PR body, which a
   push to `main` and `merge_group` runs do not carry, so it is PR-gated.

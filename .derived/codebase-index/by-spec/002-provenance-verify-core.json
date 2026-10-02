@@ -5,10 +5,6 @@
     ],
     "implementingPaths": [
       {
-        "path": "NOTICE",
-        "source": "spec-edge"
-      },
-      {
         "path": "crates/tenant-tail-core/src/data/core-allowlist.txt",
         "source": "spec-edge"
       },
@@ -163,6 +159,6 @@
     "specId": "002-provenance-verify-core",
     "specStatus": "draft"
   },
-  "schemaVersion": "1.1.0",
-  "shardHash": "25d04cdef7fdb6a3625735ef74bc11dc15d3387edf5f2781c063df38bc96c65b"
+  "schemaVersion": "1.2.0",
+  "shardHash": "97bfe6a23b70b9580f6a59f47f4652159b61237d02bfde0265ff849599c665e2"
 }
