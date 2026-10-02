@@ -1,7 +1,7 @@
 ---
 id: "003-distribution"
 title: "Distribution: the verb surface, npm + PyPI binary shims, and release pipeline"
-status: draft
+status: approved
 created: "2026-06-16"
 authors: ["tenant-tail"]
 kind: tooling
@@ -71,7 +71,9 @@ machinery that delivers it: the npm binary shim and the release pipeline.
 - `.github/workflows/ci.yml`: the CI gates, mirroring spec-spine's shape. A
   `test` job (build/test/clippy/fmt), a `self-governance` job (compile / index
   check / lint / couple, run via the pinned spec-spine), the reusable
-  `determinism` job, and a `ci-gate` aggregate that is the single required check.
+  `determinism` job, and the existing `ci-gate` aggregate. During
+  managed-profile enrollment the existing aggregate is renamed `ci-legacy`
+  and a new managed `ci-gate` is added. Both aggregates are required.
 - `.github/workflows/determinism.yml`: the cross-platform golden proving the
   committed governance artifacts (registry + index) are byte-identical on every
   triple, so the committed `.derived/` is platform-independent.
@@ -113,12 +115,21 @@ machinery that delivers it: the npm binary shim and the release pipeline.
   project.
 - The tenant pin model: one exact-version `tenant-tail` devDependency next to
   `spec-spine`; `npm ci` sha512 lockfile integrity covers it. One pin, every verb.
-- CI MUST expose a single aggregate required check (`ci-gate`) so branch
-  protection and the merge queue gate on one stable name; a failed or cancelled
-  upstream job MUST fail it, a skipped (event-gated) job MUST NOT.
+- Before managed-profile enrollment, CI MUST expose the existing distribution
+  aggregate required check (`ci-gate`). Upon enrollment, that aggregate MUST
+  become `ci-legacy` and a new managed `ci-gate` MUST be required alongside it.
+  Both MUST remain required until the legacy determinism and review obligations
+  move under the managed profile. For each aggregate, a failed or cancelled
+  upstream job MUST fail the aggregate; a skipped (event-gated) job MUST NOT
+  fail the aggregate.
 
 ## 4. Out of scope
 
 - The verify engines themselves (001, 002) and the certificate/provenance verdict
   logic.
 - `verify-sbom`: forward-declared; joins when OAP spec 203's core exists. No stub.
+
+## Owner ratification
+
+2026-10-02: Ratified under the owner's explicit fleet-upgrade instruction.
+Implementation lifecycle is unchanged by this approval.
