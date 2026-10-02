@@ -84,12 +84,13 @@
     ],
     "risk": "low",
     "sectionDigests": {
-      "000-tenant-tail-bootstrap": "0afaf3afacd05a066e82a0c21da8f7a1ed662f492bc992aa05785ee73bc49658",
+      "000-tenant-tail-bootstrap": "c53dca5afc9144327f80db20a610c3d1755a0caa667bf093179ee4e8da384339",
       "1-purpose": "42d75fc5da4634882864446abaa184e4538a6424db62e7954b1d6970b011bbf5",
       "2-territory": "f4d06290107fa274f5de5660343325e43b1c23f3eff457f2f8558faa5f447ceb",
       "3-behavior": "545198b508cb351b3fd04eaa4c6d93e6e6fbcb515695846ee8678935f567a772",
       "4-out-of-scope": "ce7f96276bb561c8c6cbe216d96381ec1830aacad8c1e94becc0019b91899cf6",
-      "managed-governance-enrollment-2026-10-02": "605687feb4f64db85530621761e39c0e002440524490ecb9e15ec16dea4b2ae9"
+      "managed-governance-enrollment-2026-10-02": "82ec9e48a946be1a38b4128d1640f98c729eb16666e5ac12453083d502d1a8d1",
+      "managed-governance-refresh-2026-10-02": "6e0cac93b2346e12ecf849d61e60b503d0b1ae4abc68b2b1ac42be802ff68b6f"
     },
     "sectionHeadings": [
       "000: tenant-tail bootstrap",
@@ -97,13 +98,14 @@
       "2. Territory",
       "3. Behavior",
       "4. Out of scope",
-      "Managed governance enrollment (2026-10-02)"
+      "Managed governance enrollment (2026-10-02)",
+      "Managed governance refresh (2026-10-02)"
     ],
     "specPath": "specs/000-tenant-tail-bootstrap/spec.md",
     "status": "approved",
     "summary": "Bootstrap spec for the tenant-tail repository: a verify-only toolkit that re-checks a factory's run-side paperwork (governance certificate, provenance) with no trust in the producer. This spec establishes the workspace skeleton (a three-crate Cargo workspace mirroring spec-spine, plus the npm binary-distribution wrapper) and seeds this repo's own spec corpus, which is governed by the pinned spec-spine library. The verify cores and the verbs that expose them are added by subsequent specs in this corpus as the extraction lands; see OAP spec 219-tenant-tail-verifier-toolkit for the decision to vend and the extraction map.\n",
     "title": "tenant-tail bootstrap (verify-only toolkit skeleton)"
   },
-  "shardHash": "e97f715f0b384b9006055d40cc5cf6f0315424f460f489dcec1865ab3326802b",
+  "shardHash": "3f93c7de4adc32b285f05e389bbaba079279c27bc8a64b27c3c40c3440d060a8",
   "specVersion": "1.9.0"
 }

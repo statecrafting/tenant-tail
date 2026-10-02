@@ -72,5 +72,6 @@ __pycache__/
 #
 #   .statecraft/derived/
 # The repository-local spec-spine the setup profile installs.
+.tooling/
 .bin/
 # <<< statecraft managed ignores <<<

@@ -84,12 +84,13 @@
     ],
     "risk": "medium",
     "sectionDigests": {
-      "003-distribution": "9f4f8fd89bb527b7f40206ca959e5e72bb2ad1df63de63aab8b211cbfb4c4b30",
+      "003-distribution": "d574665468c54603a41ea52d7b4ed65ad739b7a92d990bcb8503b892ad512258",
       "1-purpose": "b16fd27a58820994c5900fa4f113e27175281f99d2586829f758a54026c3dfd5",
       "2-territory": "3590da2c6c178907bf9b32bd7b7056ef404bd06394c5200a05366c931049fdfc",
       "3-behavior": "0cd32f49e83aa9bad24f21c51766d7714d20a314020a467b7f4832a356eb94ed",
       "4-out-of-scope": "9682f9e543a439fffb24980030e25484369d4e007f946225f26243589ae5df3a",
-      "managed-governance-enrollment-2026-10-02": "189c8f08883a46ec190c3feada6181eb925675f195009a2e875e6b4509146200",
+      "managed-governance-enrollment-2026-10-02": "e7629d00fc2c5578ceea06e9399533082568929eb5c85682160bbbd57eb891df",
+      "managed-governance-refresh-2026-10-02": "01e972b7f0710c1fb8706000f152113732ec6f8cab0c71f2e7541ac975d4ee01",
       "owner-ratification": "0363d655a381b6bfb6a5e8d59c96b2199bb3a722c95ff002a60df77e01feed98"
     },
     "sectionHeadings": [
@@ -99,13 +100,14 @@
       "3. Behavior",
       "4. Out of scope",
       "Owner ratification",
-      "Managed governance enrollment (2026-10-02)"
+      "Managed governance enrollment (2026-10-02)",
+      "Managed governance refresh (2026-10-02)"
     ],
     "specPath": "specs/003-distribution/spec.md",
     "status": "approved",
     "summary": "How the tenant-tail verifier reaches a produced application: the CLI verb surface (`verify-certificate`, `verify-provenance`; `verify-sbom` forward- declared), the prebuilt-binary npm shim a TS/JS app pins next to spec-spine (one exact-version devDependency, one pin per verb), and the tag-gated release pipeline that builds the five per-triple archives (with SBOM + SLSA provenance) and assembles the `@tenant-tail/cli-<os>-<cpu>` platform packages. The shim is a launcher, not a native addon, and mirrors spec-spine's npm/ shape. A parallel PyPI channel (`uvx tenant-tail ...`) ships the same prebuilt binary as five per-platform wheels plus an sdist refusal fallback, assembled from the same release archives (no second Rust build), mirroring spec-spine 008.\n",
     "title": "Distribution: the verb surface, npm + PyPI binary shims, and release pipeline"
   },
-  "shardHash": "aad057a6f3fa7e5b466140373093f95134819904f97897b9646ac554fc90e008",
+  "shardHash": "4d05822626427827fe106a3730e5bfbcf7f4ea9c5356446404978196bf51a8df",
   "specVersion": "1.9.0"
 }
