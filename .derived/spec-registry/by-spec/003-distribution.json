@@ -88,13 +88,14 @@
       "1. Purpose",
       "2. Territory",
       "3. Behavior",
-      "4. Out of scope"
+      "4. Out of scope",
+      "Owner ratification"
     ],
     "specPath": "specs/003-distribution/spec.md",
-    "status": "draft",
+    "status": "approved",
     "summary": "How the tenant-tail verifier reaches a produced application: the CLI verb surface (`verify-certificate`, `verify-provenance`; `verify-sbom` forward- declared), the prebuilt-binary npm shim a TS/JS app pins next to spec-spine (one exact-version devDependency, one pin per verb), and the tag-gated release pipeline that builds the five per-triple archives (with SBOM + SLSA provenance) and assembles the `@tenant-tail/cli-<os>-<cpu>` platform packages. The shim is a launcher, not a native addon, and mirrors spec-spine's npm/ shape. A parallel PyPI channel (`uvx tenant-tail ...`) ships the same prebuilt binary as five per-platform wheels plus an sdist refusal fallback, assembled from the same release archives (no second Rust build), mirroring spec-spine 008.\n",
     "title": "Distribution: the verb surface, npm + PyPI binary shims, and release pipeline"
   },
-  "shardHash": "317531d74d97fad1832661df2c6d59d667dc07ea74d66b9854ebd9af7de998f6",
+  "shardHash": "363aa300886270e0580d4920add020d70674d8172a869f555608ac9b7e6f1965",
   "specVersion": "1.1.0"
 }

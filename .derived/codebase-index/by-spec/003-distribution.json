@@ -273,8 +273,8 @@
       }
     ],
     "specId": "003-distribution",
-    "specStatus": "draft"
+    "specStatus": "approved"
   },
   "schemaVersion": "1.1.0",
-  "shardHash": "90250d3f24726d6ae20be1e919df0a87fa6dd216dfaf579f11be90dbe34a7b3e"
+  "shardHash": "7cdc179487f6d6c0f28cfab43ffe301c9361e3171a149d73c7ebf429592c3d51"
 }
