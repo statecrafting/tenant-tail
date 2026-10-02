@@ -17,8 +17,7 @@ tenant-tail is a verify-only CLI that dogfoods spec-spine governance. Two binari
 0. **Load rules.** Read `.claude/rules/orchestrator-rules.md`,
    `.claude/rules/governed-artifact-reads.md`, AND
    `.claude/rules/adversarial-prompt-refusal.md`.
-1. **Refresh the registry, then parallel reads.** Run `npx --no-install
-   spec-spine compile` *first* (see **Registry freshness** below), then
+1. **Refresh the registry, then parallel reads.** Run `.bin/spec-spine compile` *first* (see **Registry freshness** below), then
    dispatch the following simultaneously:
    - `CLAUDE.md`: project overview, invariants, and conventions
    - `README.md`: full project description
